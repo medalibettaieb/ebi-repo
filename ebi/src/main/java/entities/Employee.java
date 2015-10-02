@@ -1,12 +1,19 @@
 package entities;
 
-public class Employee {
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Employee implements Serializable{
 	private Integer id;
 	private String name;
 
 	public Employee() {
 	}
 
+	@Id
 	public Integer getId() {
 		return id;
 	}
