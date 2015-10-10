@@ -5,18 +5,7 @@
 	<persistence-unit name="ebi">
 		<jta-data-source>java:jboss/datasources/EBIDS</jta-data-source>
 		<class>entities.Employee</class>
-		<class>training.entities.oneToOneBi.A</class>
-		<class>training.entities.oneToOneBi.B</class>
-		<class>training.entities.oneToOneUni.C</class>
-		<class>training.entities.oneToOneUni.D</class>
-		<class>training.entities.oneToManyBi.E</class>
-		<class>training.entities.oneToManyBi.F</class>
-		<class>training.entities.oneToManyUniMasterSide.I</class>
-		<class>training.entities.oneToManyUniMasterSide.J</class>
-		<class>training.entities.oneToManyUniSlaveSide.K</class>
-		<class>training.entities.oneToManyUniSlaveSide.L</class>
-		<class>training.entities.manyToManyBi.M</class>
-		<class>training.entities.manyToManyBi.N</class>
+		<class>entities.Department</class>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="create" />
 			<property name="hibernate.show_sql" value="true" />

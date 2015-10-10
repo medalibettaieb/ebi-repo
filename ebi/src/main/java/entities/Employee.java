@@ -4,11 +4,18 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Employee implements Serializable{
+public class Employee implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String name;
+
+	private Department department;
 
 	public Employee() {
 	}
@@ -28,6 +35,15 @@ public class Employee implements Serializable{
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@ManyToOne
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 
 }
