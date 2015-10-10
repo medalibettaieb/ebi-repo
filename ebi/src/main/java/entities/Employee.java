@@ -1,49 +1,31 @@
 package entities;
 
+import entities.User;
 import java.io.Serializable;
+import java.lang.Double;
+import javax.persistence.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
+/**
+ * Entity implementation class for Entity: Employee
+ *
+ */
 @Entity
-public class Employee implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private Integer id;
-	private String name;
 
-	private Department department;
+public class Employee extends User implements Serializable {
+
+	
+	private Double experience;
+	private static final long serialVersionUID = 1L;
 
 	public Employee() {
+		super();
+	}   
+	public Double getExperience() {
+		return this.experience;
 	}
 
-	@Id
-	public Integer getId() {
-		return id;
+	public void setExperience(Double experience) {
+		this.experience = experience;
 	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	@ManyToOne
-	public Department getDepartment() {
-		return department;
-	}
-
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
-
+   
 }
