@@ -1,25 +1,30 @@
 package entities;
 
-import entities.User;
 import java.io.Serializable;
-import java.lang.Double;
-import javax.persistence.*;
+
+import javax.persistence.Entity;
 
 /**
  * Entity implementation class for Entity: Employee
  *
  */
 @Entity
-
 public class Employee extends User implements Serializable {
 
-	
 	private Double experience;
 	private static final long serialVersionUID = 1L;
 
 	public Employee() {
 		super();
-	}   
+	}
+
+	public Employee(String nom, String login, String password, Double experience) {
+		this.setNom(nom);
+		this.setLogin(login);
+		this.setPassword(password);
+		this.experience = experience;
+	}
+
 	public Double getExperience() {
 		return this.experience;
 	}
@@ -27,5 +32,5 @@ public class Employee extends User implements Serializable {
 	public void setExperience(Double experience) {
 		this.experience = experience;
 	}
-   
+
 }
