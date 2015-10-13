@@ -7,6 +7,10 @@
 		<class>entities.User</class>
 		<class>entities.Employee</class>
 		<class>entities.TeamLead</class>
+		<class>entities.Task</class>
+		<class>entities.Project</class>
+		<class>entities.Team</class>
+		<class>entities.Department</class>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="create" />
 			<property name="hibernate.show_sql" value="true" />
