@@ -19,7 +19,7 @@ public class Employee extends User implements Serializable {
 	}
 
 	public Employee(String nom, String login, String password, Double experience) {
-		this.setNom(nom);
+		this.setName(nom);
 		this.setLogin(login);
 		this.setPassword(password);
 		this.experience = experience;

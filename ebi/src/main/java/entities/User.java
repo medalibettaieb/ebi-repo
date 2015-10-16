@@ -22,7 +22,7 @@ import javax.persistence.OneToOne;
 public class User implements Serializable {
 
 	private Integer id;
-	private String nom;
+	private String name;
 	private String login;
 	private String password;
 	private static final long serialVersionUID = 1L;
@@ -37,7 +37,7 @@ public class User implements Serializable {
 
 	public User(String nom, String login, String password) {
 		super();
-		this.nom = nom;
+		this.name = nom;
 		this.login = login;
 		this.password = password;
 	}
@@ -52,12 +52,12 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	public String getNom() {
-		return this.nom;
+	public String getName() {
+		return name;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getLogin() {

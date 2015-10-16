@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import services.interfaces.TeamManagementServicesLocal;
 import services.interfaces.TeamManagementServicesRemote;
@@ -65,10 +66,12 @@ public class TeamManagementServices implements TeamManagementServicesRemote,
 		return entityManager.find(User.class, userId);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> findAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		String jpql = "select u from User u";
+		Query query = entityManager.createQuery(jpql);
+		return query.getResultList();
 	}
 
 	@Override
@@ -126,6 +129,21 @@ public class TeamManagementServices implements TeamManagementServicesRemote,
 		} catch (Exception e) {
 		}
 		return b;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> findAllUsersByName(String name) {
+		String jpql = "select u from User u where u.name=:param";
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter("param", name);
+		return query.getResultList();
+	}
+
+	@Override
+	public User login(String login, String password) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

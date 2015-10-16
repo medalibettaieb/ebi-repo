@@ -20,6 +20,8 @@ public interface TeamManagementServicesRemote {
 
 	List<User> findAllUsers();
 
+	List<User> findAllUsersByName(String name);
+
 	Boolean createTeam(Team team);
 
 	Team findTeamById(Integer teamId);
@@ -31,5 +33,7 @@ public interface TeamManagementServicesRemote {
 	Boolean assignEmployeesToTeam(List<Employee> employees, Integer teamId);
 
 	Boolean assignEmployeeToTeam(Integer employeeId, Integer teamId);
+
+	User login(String login, String password);
 
 }

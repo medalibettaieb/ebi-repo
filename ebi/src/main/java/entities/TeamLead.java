@@ -1,25 +1,29 @@
 package entities;
 
-import entities.User;
 import java.io.Serializable;
-import java.lang.String;
-import javax.persistence.*;
+
+import javax.persistence.Entity;
 
 /**
  * Entity implementation class for Entity: TeamLead
  *
  */
 @Entity
-
 public class TeamLead extends User implements Serializable {
 
-	
 	private String level;
 	private static final long serialVersionUID = 1L;
 
 	public TeamLead() {
-		super();
-	}   
+	}
+
+	public TeamLead(String nom, String login, String password, String level) {
+		this.level = level;
+		this.setName(nom);
+		this.setLogin(login);
+		this.setPassword(password);
+	}
+
 	public String getLevel() {
 		return this.level;
 	}
@@ -27,5 +31,5 @@ public class TeamLead extends User implements Serializable {
 	public void setLevel(String level) {
 		this.level = level;
 	}
-   
+
 }

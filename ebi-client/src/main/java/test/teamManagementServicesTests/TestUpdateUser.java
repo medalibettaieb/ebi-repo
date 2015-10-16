@@ -5,22 +5,19 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import services.interfaces.TeamManagementServicesRemote;
-import entities.Employee;
-import entities.TeamLead;
+import entities.User;
 
-public class TestAddUser {
+public class TestUpdateUser {
 
 	public static void main(String[] args) throws NamingException {
 		Context context = new InitialContext();
 		TeamManagementServicesRemote proxy = (TeamManagementServicesRemote) context
 				.lookup("/ebi/TeamManagementServices!services.interfaces.TeamManagementServicesRemote");
 
-		Employee employee = new Employee("foulen", "f", "f", 5D);
-		
-		TeamLead teamLead = new TeamLead("med ali", "med", "med", "senior");
+		User user = proxy.findUserById(1);
+		user.setName("new look");
 
-		System.out.println(proxy.addUser(employee));
-		System.out.println(proxy.addUser(teamLead));
+		System.out.println(proxy.updateUser(user));
 
 	}
 }

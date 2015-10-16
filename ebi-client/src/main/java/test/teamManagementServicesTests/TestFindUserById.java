@@ -6,21 +6,21 @@ import javax.naming.NamingException;
 
 import services.interfaces.TeamManagementServicesRemote;
 import entities.Employee;
-import entities.TeamLead;
+import entities.User;
 
-public class TestAddUser {
+public class TestFindUserById {
 
 	public static void main(String[] args) throws NamingException {
 		Context context = new InitialContext();
 		TeamManagementServicesRemote proxy = (TeamManagementServicesRemote) context
 				.lookup("/ebi/TeamManagementServices!services.interfaces.TeamManagementServicesRemote");
+		User user = proxy.findUserById(1);
 
-		Employee employee = new Employee("foulen", "f", "f", 5D);
-		
-		TeamLead teamLead = new TeamLead("med ali", "med", "med", "senior");
-
-		System.out.println(proxy.addUser(employee));
-		System.out.println(proxy.addUser(teamLead));
+		if (user instanceof Employee) {
+			System.out.println(" (Employee) welcome Mr : " + user.getName());
+		} else {
+			System.out.println(" (TeamLead) welcome Sir :" + user.getName());
+		}
 
 	}
 }
