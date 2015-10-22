@@ -4,36 +4,43 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
+import entities.Department;
 import entities.Employee;
 import entities.Team;
 import entities.User;
 
 @Remote
 public interface TeamManagementServicesRemote {
-	Boolean addUser(User user);
+	Boolean addUser(User user);// OK
 
-	Boolean deleteUserById(Integer userId);
+	Boolean deleteUserById(Integer userId);// OK
 
-	Boolean updateUser(User user);
+	Boolean updateUser(User user);// OK
 
-	User findUserById(Integer userId);
+	User findUserById(Integer userId);// OK
 
-	List<User> findAllUsers();
+	List<User> findAllUsers();// OK
 
-	List<User> findAllUsersByName(String name);
+	List<User> findAllUsersByName(String name);// OK
 
-	Boolean createTeam(Team team);
+	User login(String login, String password);// OK
 
-	Team findTeamById(Integer teamId);
+	Boolean createTeam(Team team);// OK
 
-	List<Team> findAllTeams();
+	Team findTeamById(Integer teamId);// OK
+
+	List<Team> findAllTeams();// OK
+
+	Boolean createTeamWhithNewDepartment(Team team, Department department);// OK
+
+	List<Team> findAllTeamsByDepartmentId(Integer departmentId);
+
+	Boolean createDepartmentWithNewTeam(Team team, Department department);
 
 	Boolean assignTeamLeadToTeam(Integer teamLeadId, Integer teamId);
 
 	Boolean assignEmployeesToTeam(List<Employee> employees, Integer teamId);
 
 	Boolean assignEmployeeToTeam(Integer employeeId, Integer teamId);
-
-	User login(String login, String password);
 
 }

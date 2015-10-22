@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import services.interfaces.TeamManagementServicesLocal;
 import services.interfaces.TeamManagementServicesRemote;
+import entities.Department;
 import entities.Employee;
 import entities.Team;
 import entities.User;
@@ -78,7 +79,7 @@ public class TeamManagementServices implements TeamManagementServicesRemote,
 	public Boolean createTeam(Team team) {
 		Boolean b = false;
 		try {
-			// TODO Auto-generated method stub
+			entityManager.persist(team);
 			b = true;
 		} catch (Exception e) {
 		}
@@ -87,14 +88,15 @@ public class TeamManagementServices implements TeamManagementServicesRemote,
 
 	@Override
 	public Team findTeamById(Integer teamId) {
-		// TODO Auto-generated method stub
-		return null;
+		return entityManager.find(Team.class, teamId);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Team> findAllTeams() {
-		// TODO Auto-generated method stub
-		return null;
+		String jpql = "select t from Team t";
+		Query query = entityManager.createQuery(jpql);
+		return query.getResultList();
 	}
 
 	@Override
@@ -153,6 +155,42 @@ public class TeamManagementServices implements TeamManagementServicesRemote,
 			System.err.println("bad credentials");
 		}
 		return user;
+	}
+
+	@Override
+	public Boolean createTeamWhithNewDepartment(Team team, Department department) {
+		Boolean b = false;
+		try {
+			team.setDepartment(department);
+			entityManager.persist(team);
+			b = true;
+		} catch (Exception e) {
+		}
+		return b;
+	}
+
+	@Override
+	public Boolean createDepartmentWithNewTeam(Team team, Department department) {
+		Boolean b = false;
+		try {
+			List<Team> teams = findAllTeamsByDepartmentId(department.getId());
+			teams.add(team);
+			department.linkTeamsToThisDepartment(teams);
+			entityManager.persist(department);
+			b = true;
+		} catch (Exception e) {
+		}
+		return b;
+	}
+
+	@Override
+	public List<Team> findAllTeamsByDepartmentId(Integer departmentId) {
+		Department department = entityManager.find(Department.class,
+				departmentId);
+		String jpql = "select t from Team t where t.department=:param";
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter("param", department);
+		return query.getResultList();
 	}
 
 }

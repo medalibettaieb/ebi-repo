@@ -3,7 +3,10 @@ package entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -28,7 +31,13 @@ public class Team implements Serializable {
 		super();
 	}
 
+	public Team(String name) {
+		super();
+		this.name = name;
+	}
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getId() {
 		return this.id;
 	}
@@ -63,7 +72,7 @@ public class Team implements Serializable {
 		this.users = users;
 	}
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	public Department getDepartment() {
 		return department;
 	}
