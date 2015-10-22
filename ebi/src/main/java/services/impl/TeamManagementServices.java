@@ -78,7 +78,7 @@ public class TeamManagementServices implements TeamManagementServicesRemote,
 	public Boolean createTeam(Team team) {
 		Boolean b = false;
 		try {
-
+			// TODO Auto-generated method stub
 			b = true;
 		} catch (Exception e) {
 		}
@@ -101,7 +101,7 @@ public class TeamManagementServices implements TeamManagementServicesRemote,
 	public Boolean assignTeamLeadToTeam(Integer teamLeadId, Integer teamId) {
 		Boolean b = false;
 		try {
-
+			// TODO Auto-generated method stub
 			b = true;
 		} catch (Exception e) {
 		}
@@ -113,7 +113,7 @@ public class TeamManagementServices implements TeamManagementServicesRemote,
 			Integer teamId) {
 		Boolean b = false;
 		try {
-
+			// TODO Auto-generated method stub
 			b = true;
 		} catch (Exception e) {
 		}
@@ -124,7 +124,7 @@ public class TeamManagementServices implements TeamManagementServicesRemote,
 	public Boolean assignEmployeeToTeam(Integer employeeId, Integer teamId) {
 		Boolean b = false;
 		try {
-
+			// TODO Auto-generated method stub
 			b = true;
 		} catch (Exception e) {
 		}
@@ -142,8 +142,17 @@ public class TeamManagementServices implements TeamManagementServicesRemote,
 
 	@Override
 	public User login(String login, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		String jpql = "select u from User u where u.login=:param1 and u.password=:param2";
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter("param1", login);
+		query.setParameter("param2", password);
+		User user = null;
+		try {
+			user = (User) query.getSingleResult();
+		} catch (Exception e) {
+			System.err.println("bad credentials");
+		}
+		return user;
 	}
 
 }
